@@ -17,6 +17,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
         body: Column(
           children: [
             Container(
+              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
               height: 170,
               decoration: BoxDecoration(color: Colors.blue.shade800),
               child: Row(
