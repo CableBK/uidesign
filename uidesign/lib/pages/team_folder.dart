@@ -119,26 +119,30 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             const SizedBox(
               height: 25,
             ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 4,
-                      color: Colors.blue,
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    const Text(
-                      'SOURCE',
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 4,
+                        color: Colors.blue,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const Text(
+                        'SOURCE',
+                        style: TextStyle(
+                            fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ));
