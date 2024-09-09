@@ -198,12 +198,48 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  buildProjectView()
                 ],
               ),
             )
           ],
         ));
+  }
+
+  Container buildProjectView() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      height: 65,
+      decoration: BoxDecoration(
+          color: Colors.grey.shade200, borderRadius: BorderRadius.circular(15)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.folder,
+                color: Colors.amber,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              Text(
+                'Cable File',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.more_vert_rounded, color: Colors.grey))
+        ],
+      ),
+    );
   }
 
   Column buildFileColumn(String image, String filename, String extension) {
