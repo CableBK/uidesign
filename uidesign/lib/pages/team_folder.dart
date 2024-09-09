@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class TeamFolderPage extends StatefulWidget {
@@ -152,6 +150,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             ),
             Expanded(
               child: ListView(
+                padding: EdgeInsets.all(25),
                 children: [
                   const Text(
                     'Recently updated',
@@ -165,15 +164,39 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                   ),
                   Row(
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(38),
-                            height: 110,
-                            child: Image.asset('assets/images/P001.png'),
-                          )
-                        ],
-                      )
+                      buildFileColumn('P001', 'CableBK', '.folder'),
+                      SizedBox(
+                        width: availableScreenWidth * .03,
+                      ),
+                      buildFileColumn('P001', 'Flutter exercise', '.folder'),
+                      SizedBox(
+                        width: availableScreenWidth * .03,
+                      ),
+                      buildFileColumn('P001', 'ฝึกทำ UI', '.folder'),
+                    ],
+                  ),
+                  Divider(
+                    height: 60,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        'Project',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Create New',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   )
                 ],
@@ -181,6 +204,40 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             )
           ],
         ));
+  }
+
+  Column buildFileColumn(String image, String filename, String extension) {
+    return Column(
+      children: [
+        Container(
+          width: availableScreenWidth * .31,
+          decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(20)),
+          padding: EdgeInsets.all(38),
+          height: 110,
+          child: Image.asset('assets/images/$image.png'),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        RichText(
+          text: TextSpan(
+              text: filename,
+              style: TextStyle(color: Colors.black, fontSize: 14),
+              children: [
+                TextSpan(
+                  text: extension,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 12,
+                  ),
+                ),
+              ]),
+        )
+      ],
+    );
   }
 
   Column buildFileSizeChart(
