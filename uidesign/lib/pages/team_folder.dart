@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class TeamFolderPage extends StatefulWidget {
@@ -10,8 +12,11 @@ class TeamFolderPage extends StatefulWidget {
 }
 
 class _TeamFolderPageState extends State<TeamFolderPage> {
+  double availableScreenWidth = 0;
+
   @override
   Widget build(BuildContext context) {
+    availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
         backgroundColor: Colors.grey[100],
         body: Column(
@@ -90,7 +95,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                 children: [
                   RichText(
                     text: const TextSpan(
-                        text: 'Storage',
+                        text: 'Storage ',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -123,22 +128,52 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  buildFileSizeChart('SOURCE', Colors.blue, .3),
+                  const SizedBox(
+                    width: 2,
+                  ),
+                  buildFileSizeChart('DOC', Colors.red, .25),
+                  const SizedBox(
+                    width: 2,
+                  ),
+                  buildFileSizeChart('IMAGES', Colors.yellow, .20),
+                  const SizedBox(
+                    width: 2,
+                  ),
+                  buildFileSizeChart('', Colors.grey[200], .23),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const Divider(
+              height: 20,
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  const Text(
+                    'Recently updated',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
                     children: [
-                      Container(
-                        width: 100,
-                        height: 4,
-                        color: Colors.blue,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const Text(
-                        'SOURCE',
-                        style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.bold),
-                      ),
+                      Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(38),
+                            height: 110,
+                            child: Image.asset('assets/images/P001.png'),
+                          )
+                        ],
+                      )
                     ],
                   )
                 ],
@@ -146,5 +181,26 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
             )
           ],
         ));
+  }
+
+  Column buildFileSizeChart(
+      String title, Color? color, double widthPercentage) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: availableScreenWidth * widthPercentage,
+          height: 4,
+          color: color,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          title,
+          style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
   }
 }
