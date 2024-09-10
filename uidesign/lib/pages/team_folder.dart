@@ -202,7 +202,12 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  buildProjectView()
+                  buildProjectView('Kabel'),
+                  buildProjectView('Time'),
+                  buildProjectView('Cable'),
+                  buildProjectView('Git'),
+                  buildProjectView('Github'),
+                  buildProjectView('MOVE EV X'),
                 ],
               ),
             )
@@ -210,8 +215,9 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
         ));
   }
 
-  Container buildProjectView() {
+  Container buildProjectView(String folderName) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 65,
       decoration: BoxDecoration(
@@ -229,7 +235,7 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
                 width: 12,
               ),
               Text(
-                'Cable File',
+                folderName,
                 style: TextStyle(fontSize: 16),
               ),
             ],
