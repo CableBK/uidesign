@@ -11,6 +11,7 @@ class TeamFolderPage extends StatefulWidget {
 
 class _TeamFolderPageState extends State<TeamFolderPage> {
   double availableScreenWidth = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -211,6 +212,36 @@ class _TeamFolderPageState extends State<TeamFolderPage> {
               ],
             ),
           )
+        ],
+      ),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+          BoxShadow(color: Colors.white, spreadRadius: 7, blurRadius: 1)
+        ]),
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        currentIndex: selectedIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time),
+            label: 'Time',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box),
+            label: 'Folder',
+          ),
         ],
       ),
     );
